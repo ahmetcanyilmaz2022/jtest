@@ -6,7 +6,9 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/ahmetcanyilmaz2022/jtest.git'
+                script {
+                    git branch: 'main', credentialsId: 'your-git-credentials-id', url: 'https://github.com/ahmetcanyilmaz2022/jtest.git'
+                }
             }
         }
         stage('Deploy to Kubernetes') {
