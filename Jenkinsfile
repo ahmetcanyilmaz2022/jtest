@@ -2,13 +2,12 @@ pipeline {
     agent any
     environment {
         KUBECONFIG = '/home/ubuntu/.kube/config'
+        PATH = "$PATH:/usr/local/bin"
     }
     stages {
         stage('Checkout') {
             steps {
-                script {
-                    git branch: 'main', credentialsId: 'your-git-credentials-id', url: 'https://github.com/ahmetcanyilmaz2022/jtest.git'
-                }
+                git 'https://github.com/ahmetcanyilmaz2022/jtest.git'
             }
         }
         stage('Deploy to Kubernetes') {
